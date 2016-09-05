@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('qb_token', function() {
     return view('qb_token');
 });
+
+Route::get('qb_token/rt', 'QbController@rt');

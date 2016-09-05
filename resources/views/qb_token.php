@@ -7,7 +7,7 @@
         <script src="https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js"></script>
         <script>
             intuit.ipp.anywhere.setup({
-                grantUrl: 'http://ec2-54-208-97-74.compute-1.amazonaws.com/qb_token_request',
+                grantUrl: 'http://ec2-54-208-97-74.compute-1.amazonaws.com/qb_token/rt',
                 menuProxy: '',
                 datasources: {
                     quickbooks : true,
