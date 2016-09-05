@@ -16,5 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('qbtoken', function() {
-    return view('qbtoken');
+    return "hello qbtoken";
+    //return view('qbtoken');
 });
