@@ -20,7 +20,7 @@ class QbController extends Controller
     {
         $req_url = 'https://oauth.intuit.com/oauth/v1/get_request_token';
         $auth_url = 'https://appcenter.intuit.com/Connect/Begin';
-        $rt = $this->oauth->getRequestToken($req_url, str_replace('/rt', '/at', $request->url());
+        $rt = $this->oauth->getRequestToken($req_url, str_replace('/rt', '/at', $request->url()));
         return redirect($auth_url .'?oauth_token='.$rt['oauth_token']);
     }
 }
