@@ -19,7 +19,7 @@ class AwsSdbController extends Controller {
         } else {
             return redirect('sdb_login');
         }
-        $domains = ['xlitest1', 'url_path_dev']
+        $domains = ['xlitest1', 'url_path_dev'];
         return view('sdb_list', ['domains'=>$domains]);
     }
 }
