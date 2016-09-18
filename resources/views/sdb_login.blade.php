@@ -8,8 +8,11 @@
     <body>
         <form method="POST" action="/sdb_list">
         {{ csrf_field() }}
-         Account name: <input type="text" name="name"><br>
-         Password: <input type="password" name="psw">
+         Account name:<br>
+         <input type="text" name="name"><br>
+         Password:<br>
+         <input type="password" name="psw"><br>
+         <input type="submit" value="Submit">
         </form>
     </body>
 </html>
