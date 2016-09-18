@@ -5,11 +5,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AwsSdbController extends Controller {
-    public login() {
+    public function login() {
         return view('sdb_login');
     }
 
-    public list(Request $request) {
+    public function list(Request $request) {
         $name = $pass = NULL;
         if(($name = $request->input('name')) && ($pass = $request->input('psw')) {
            $request->session()->put('name', $name);
