@@ -11,7 +11,7 @@ class AwsSdbController extends Controller {
 
     public function list(Request $request) {
         $name = $pass = NULL;
-        if(($name = $request->input('name')) && ($pass = $request->input('psw')) {
+        if(($name = $request->input('name')) && ($pass = $request->input('psw'))) {
            $request->session()->put('name', $name);
            $request->session()->put('pass', $pass);
         } else if(($name = $request->session()->get('name')) && ($pass = $request->session()->get('pass'))) {
