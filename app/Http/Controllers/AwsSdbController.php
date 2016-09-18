@@ -1,0 +1,24 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class AwsSdbController extends Controller {
+    public login() {
+        return view('sdb_login');
+    }
+
+    public list(Request $request) {
+        $name = $pass = NULL;
+        if(($name = $request->input('name')) && ($pass = $request->input('psw')) {
+           $request->session()->put('name', $name);
+           $request->session()->put('pass', $pass);
+        } else if(($name = $request->session()->get('name')) && ($pass = $request->session()->get('pass'))) {
+            // do nothing
+        } else {
+            return redirect('sdb_login');
+        }
+
+    }
+}

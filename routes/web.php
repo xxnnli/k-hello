@@ -22,6 +22,6 @@ Route::get('qb_token', function() {
 Route::get('qb_token/rt', 'QbController@rt');
 Route::get('qb_token/at', 'QbController@at');
 
-Route::get('sdb_login', function() {
-    return view('sdb_login');
-});
+Route::get('sdb_login', 'AwsSdbController@login');
+Route::get('sdb_list', 'AwsSdbController@list');
+Route::post('sdb_list', 'AwsSdbController@list');
