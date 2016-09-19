@@ -35,11 +35,9 @@ class AwsSdbController extends Controller {
         $domains = $client->getIterator('ListDomains')->toArray();
         $data = [];
         foreach($domains as $domain) {
-            $all = $client->select(['SelectExpression' => "select * from $domain"]);
-            if(isset($all['Items'])) {
-                foreach ($all['Items'] as $item) {
-                    $data[$domain][] = ['Name' => $item['Name'], 'Attributes' => $item['Attributes']];
-                }
+            $iterator = $client->getIterator('Select', ['SelectExpression' => "select * from $domain"]);
+            foreach ($iterator as $item) {
+                $data[$domain][] = ['Name' => $item['Name'], 'Attributes' => $item['Attributes']];
             }
         }
         return view('sdb_list', ['data'=>$data]);
