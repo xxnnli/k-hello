@@ -12,8 +12,12 @@ class AwsSdbController extends Controller {
     public function list(Request $request) {
         $name = $pass = NULL;
         if(($name = $request->input('name')) && ($pass = $request->input('psw'))) {
-           $request->session()->put('name', $name);
-           $request->session()->put('pass', $pass);
+            if($name == env('sdb_name') && $pass == env('sdb_pass')) {
+                $request->session()->put('name', $name);
+                $request->session()->put('pass', $pass);
+            } else {
+                return redirect('sdb_login');
+            }
         } else if(($name = $request->session()->get('name')) && ($pass = $request->session()->get('pass'))) {
             // do nothing
         } else {
