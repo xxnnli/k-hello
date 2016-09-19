@@ -33,6 +33,13 @@ class AwsSdbController extends Controller {
             'region'  => 'us-east-1'
         ]);
         $domains = $client->getIterator('ListDomains')->toArray();
-        return view('sdb_list', ['domains'=>$domains]);
+        $data = [];
+        foreach($domains as $domain) {
+            $result = $client->select(['SelectExpression' => "select * from $domain"]);
+            foreach ($result['Items'] as $item) {
+                $data[$domain][] = ['Name' => $item['Name'], 'Attributes' => $item['Attributes']];
+            }
+        }
+        return view('sdb_list', ['data'=>$data]);
     }
 }

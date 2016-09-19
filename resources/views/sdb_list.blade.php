@@ -6,11 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <p>Domains:</p>
+        @foreach($data as $domain => $items)
+        <p>Domain: {{$domain}}
         <ul>
-            @foreach($domains as $domain)
-            <li>{{$domain}}</li>
+            @foreach($items as $item)
+            <li>{{$item['Name']}} @foreach($item['Attributes'] as $attr) {{$attr}} @endforeach
+            </li>
             @endforeach
         </ul>
+        @endforeach
     </body>
 </html>
