@@ -10,7 +10,7 @@
         <p>Domain: {{$domain}}
         <ul>
             @foreach($items as $item)
-            <li>{{$item['Name']}} @foreach($item['Attributes'] as $attr) {{$attr}} @endforeach </li>
+            <li>{{$item['Name']}} @foreach($item['Attributes'] as $attr) {{$attr['Name']}}={{$attr['Value']}} @endforeach </li>
             @endforeach
         </ul>
         @endforeach
