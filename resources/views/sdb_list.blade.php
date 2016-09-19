@@ -14,5 +14,6 @@
             @endforeach
         </ul>
         @endforeach
+        {{var_export($all);}}
     </body>
 </html>
