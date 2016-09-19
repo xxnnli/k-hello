@@ -36,6 +36,7 @@ class AwsSdbController extends Controller {
         $data = [];
         foreach($domains as $domain) {
             $all = $client->select(['SelectExpression' => "select * from $domain"]);
+            $all = ['Items' => 'test', 'Attributes' => ['Created' => '2016']];
             foreach ($all['Items'] as $item) {
                 $data[$domain][] = ['Name' => $item['Name'], 'Attributes' => $item['Attributes']];
             }
