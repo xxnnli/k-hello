@@ -14,6 +14,5 @@
             @endforeach
         </ul>
         @endforeach
-        {{$all}}
     </body>
 </html>

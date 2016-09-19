@@ -42,6 +42,6 @@ class AwsSdbController extends Controller {
                 }
             }
         }
-        return view('sdb_list', ['data'=>$data, 'all'=>var_export($all)]);
+        return view('sdb_list', ['data'=>$data]);
     }
 }
