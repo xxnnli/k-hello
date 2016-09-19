@@ -41,6 +41,6 @@ class AwsSdbController extends Controller {
                 $data[$domain][] = ['Name' => $item['Name'], 'Attributes' => $item['Attributes']];
             }
         }
-        return view('sdb_list', ['data'=>$data, 'all'=>$all]);
+        return view('sdb_list', ['data'=>$data, 'all'=>var_export($all)]);
     }
 }
