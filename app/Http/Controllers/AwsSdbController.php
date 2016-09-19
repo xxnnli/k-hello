@@ -11,15 +11,16 @@ class AwsSdbController extends Controller {
     }
 
     public function list(Request $request) {
-        $name = $pass = NULL;
-        if(($name = $request->input('name')) && ($pass = $request->input('psw'))) {
-            if($name == env('sdb_name') && $pass == env('sdb_pass')) {
-                $request->session()->put('name', $name);
-                $request->session()->put('pass', $pass);
-            } else {
-                $request->session()->flush();
-                return redirect('sdb_login');
-            }
+        if($request->isMethod('post')) {
+            $request->session()->flush();
+            $this->validate($request, [
+                'name' => 'required|sdb_login',
+                'psw' => 'required|sdb_login'
+            ]);
+            $name = $request->input('name');
+            $pass = $request->input('psw');
+            $request->session()->put('name', $name);
+            $request->session()->put('pass', $pass);
         } else if(($name = $request->session()->get('name')) && ($pass = $request->session()->get('pass'))) {
             // do nothing
         } else {

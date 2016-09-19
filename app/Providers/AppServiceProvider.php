@@ -13,7 +13,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('sdb_login', function($attribute, $value, $parameters, $validator) {
+            if($attribute == 'name') {
+                return $value == env('sdb_name');
+            } else if($attribute == 'psw') {
+                return $value == env('sdb_pass');
+            }
+            return FALSE;
+        });
     }
 
     /**
