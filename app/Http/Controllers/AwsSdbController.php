@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Aws\SimpleDb\SimpleDbClient;
 
 class AwsSdbController extends Controller {
     public function login() {
@@ -24,7 +25,14 @@ class AwsSdbController extends Controller {
         } else {
             return redirect('sdb_login');
         }
-        $domains = ['xlitest1', 'url_path_dev'];
+        $client = SimpleDbClient::factory([
+            'credentials' => [
+                'key'    => env('aws_ki'),
+                'secret' => env('aws_si')
+            ],
+            'region'  => 'us-east-1'
+        ]);
+        $domains = $client->getIterator('ListDomains')->toArray();
         return view('sdb_list', ['domains'=>$domains]);
     }
 }
