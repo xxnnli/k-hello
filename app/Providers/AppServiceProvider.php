@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
                 return $value == env('sdb_pass');
             }
             return FALSE;
-        }, ['sdb_login'=> 'Invalid :attribute!']);
+        }, 'Invalid :attribute!');
     }
 
     /**
